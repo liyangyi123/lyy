@@ -5,7 +5,8 @@
         <el-icon><component class="icons" is="menu"></component></el-icon>
       </el-button>
       <el-breadcrumb separator="/" class="bread">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="current" :to="{ path: current.path }">{{current.label}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="r-content">
@@ -17,7 +18,7 @@
           <el-dropdown-menu>
             
             <el-dropdown-item>个人中心</el-dropdown-item>
-            <el-dropdown-item>退出</el-dropdown-item>
+            <el-dropdown-item @click="handleLoginOut">退出 </el-dropdown-item>
     
           </el-dropdown-menu>
         </template>
@@ -29,8 +30,10 @@
 
 <script setup>
 import { useAllDataStore } from '@/stores/index'
+import { computed } from 'vue'
+import {useRouter} from 'vue-router'
 const store = useAllDataStore()
-
+const router = useRouter()
 const toggleCollapse = () => {
   store.toggleCollapse()
 }
@@ -39,6 +42,18 @@ const getImageUrl = (user) => {
   return new URL(`../assets/images/${user}.png`, import.meta.url).href
   //import.meta.url是当前文件的路径，URL是一个构造函数，用于生成URL对象，两个参数，第一个是路径，第二个是基础路径
 }
+
+const handleLoginOut = ()=>{
+  store.clean()
+  router.push('/login')
+
+} 
+
+const current = computed(() => 
+  store.state.currentMenu
+  // console.log(store.state.currentMenu)
+)
+
 
 </script>
 

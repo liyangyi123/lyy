@@ -18,20 +18,20 @@ const getTableData = async () => {
   const data = await proxy.$api.getTableData()
   tableData.value = data.tableData
 
-  console.log(data)
+  // console.log(data)
 }
 
 const getCountData = async () => {
   const data = await proxy.$api.getCountData()
   countData.value = data.countData
-  console.log(data)
+  // console.log(data)
   
 }
 const getChartData = async () => {
   const data = await proxy.$api.getChartData()
   const {orderData,videoData,userData} = data
   // const {orderData} = data
-  console.log(orderData)
+  // console.log(orderData)
 
   
   //对第一个图表进行x轴和series数据的处理

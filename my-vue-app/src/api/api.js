@@ -79,6 +79,13 @@ function editUser(data){
         data
     })
 }
+function getMenu(params) {
+    return request({
+      url: '/permission/getMenu',
+      method: 'post',
+      data: params
+    })
+}
 
 
 // 将所有API函数作为一个对象默认导出
@@ -89,7 +96,8 @@ export default {
     getUserData,
     deleteUser,
     addUser,
-    editUser
+    editUser,
+    getMenu
 }
 
 // axios.get("/api/home/getTableData").then(res=>{console.log(res)
