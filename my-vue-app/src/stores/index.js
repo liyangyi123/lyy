@@ -105,7 +105,7 @@ export const useAllDataStore = defineStore('allData', () => {
               router.removeRoute(item.name)
             }
           })
-          console.log(router.getRoutes())
+          // console.log(router.getRoutes())
           //根据用户自己的菜单生成的路由
           routeArr.forEach(item=>{
               //addRoute方法会返回一个函数，执行这个函数会把这个路由删除

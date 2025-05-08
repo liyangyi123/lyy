@@ -32,15 +32,15 @@ const loginForm = reactive({
 const handleLogin = async () => {
     //登陆的时候需要发送请求得到用户的权限菜单
     const res = await proxy.$api.getMenu(loginForm)
-    console.log(res)
+    // console.log(res)
     //拿到菜单以后 在哪里显示呢？
     store.updateMenuList(res.menuList)
-    console.log(store.state.menuList)
+    // console.log(store.state.menuList)
     store.state.token = res.token
     //整一个动态路由
     store.addMenu(router)
     // store.addMenu(router)
-    console.log(router.getRoutes())
+    // console.log(router.getRoutes())
     router.push('/home')
 
     

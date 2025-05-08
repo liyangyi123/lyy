@@ -38,6 +38,7 @@ const toggleCollapse = () => {
   store.toggleCollapse()
 }
 
+
 const getImageUrl = (user) => {
   return new URL(`../assets/images/${user}.png`, import.meta.url).href
   //import.meta.url是当前文件的路径，URL是一个构造函数，用于生成URL对象，两个参数，第一个是路径，第二个是基础路径
